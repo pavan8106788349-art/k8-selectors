@@ -9,11 +9,11 @@ spec:
   - name: nginx
     image: nginx
   # asking for VIP room
-  nodeselector:
+  nodeSelector:
     project: roboshop
   # showing booking confirmation    
   tolerations:
   - key: "project"
     operator: "Equal"
     value: "roboshop"
-    effect: "NoExecute"
+    effect: "NoSchedule"
