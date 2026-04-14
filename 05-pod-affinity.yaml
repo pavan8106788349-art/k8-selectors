@@ -14,7 +14,7 @@ kind: Pod
 metadata:
   name: pod-2
   labels:
-    tier: bckend
+    tier: backend
 spec:
 affinity:
     podAffinity:
