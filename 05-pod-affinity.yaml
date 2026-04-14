@@ -14,11 +14,10 @@ kind: Pod
 metadata:
   name: pod-2
   labels:
-    tier: backend
+    tier: backend   
 spec:
-affinity:
+  affinity:        
     podAffinity:
-    # Hard Rule
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
@@ -29,4 +28,5 @@ affinity:
         topologyKey: topology.kubernetes.io/zone
   containers:
   - name: nginx
-    image: nginx  
+    image: nginx
+    
