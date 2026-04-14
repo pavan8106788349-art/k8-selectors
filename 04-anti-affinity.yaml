@@ -1,19 +1,22 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-anti-affinity
+  name: nginx-anti
   labels:
-    env: test
+    app: nginx
 spec:
   affinity:
-    nodeAffinity:
-      # Hard Rule
+    podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: topology.kubernetes.io/zone
-            operator: NotIn
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
             values:
-            - us-east-1c 
+            - nginx
+        topologyKey: "kubernetes.io/hostname"
+  containers:
+  - name: nginx
+    image: nginx
       
  
